@@ -2,7 +2,7 @@
 
 <h3><%= @product.name %></h3>
 <h4>Description: <%= @product.description %></h4>
-<h5>Price in cents: <%= @product.price_in_dollars %></h5>
+<h5>Price in dollas: <%= @product.price_in_dollars %></h5>
 
 <h3>Reviews</h3>
 <% if @product.reviews.empty? %>
@@ -15,4 +15,29 @@
         <li>Last updated at: <%= review.updated_at %></li>
       </ul>
     <% end %>
+<% end %>
+
+<h4>New Review</h4>
+
+<%= form_for([@product, @review]) do |f| %>
+  <% if @review.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved: </h2>
+
+      <ul>
+        <% @review.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :comment %><br />
+    <%= f.text_area :comment %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
 <% end %>
