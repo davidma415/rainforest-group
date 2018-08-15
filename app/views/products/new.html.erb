@@ -1,14 +1,6 @@
 <h1>Create New Product</h1>
+<%= link_to 'All Products', products_path %>
 
-<% if @product.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@product.errors.count, "error") %> stopped this product from being saved:</h2>
-    <ul>
-      <% @product.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+<%= render 'errormsg', product: @product %>
 
 <%= render 'form', product: @product %>
