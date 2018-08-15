@@ -1,0 +1,4 @@
+<h1>Edit <%= @product.name %></h1>
+<%= link_to 'Back to All Products', products_url %> | <%= link_to 'Back to Product', product_path(@product) %>
+
+<%= render 'form', product: @product %>
